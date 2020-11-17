@@ -12,15 +12,15 @@ manifests:
     path: ./stable/insights-admission
     valuesFile: stable/insights-admission/ci/test-values.yaml
 
-# TODO: exemptions are not yet supported
+# TODO: fix filenames
 exemptions:
   - image: quay.io/fairwinds/nova
     report: trivy
     reason: Nova's image is built from the scratch base image, and is unscannable
-  - filename: stable/insights-admission/templates/test-deployment.yaml
+  - filename: insights-admission/insights-admission/templates/test-deployment.yaml
     report: polaris
     reason: This file is specifically meant to trigger Polaris findings
-  - filename: stable/insights-agent/templates/kube-bench/cronjob.yaml
+  - filename: insights-agent/insights-agent/templates/kube-bench/cronjob.yaml
     report: polaris
     checks:
       - hostPIDSet
